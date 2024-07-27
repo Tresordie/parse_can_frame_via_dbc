@@ -5,31 +5,14 @@
 @Author  :   SimonYuan 
 @Version :   1.0
 @Site    :   https://tresordie.github.io/
-@Desc    :   None
+@Desc    :   convert scud can log, porting from Ion Buzdugan's script, fixed the bug "Unable to convert"
 '''
 
 import cantools
-import pandas
+import pandas as pd
+import can
 
-raw_data = b'\x04\x0E\x02\x0E\x01\x0E\x01\x0E'
 
-db = cantools.database.load_file('./maple.dbc')
-
-messages = db.messages
-
-# print(messages)
-
-message = messages[0]
-signals = message.signals
-
-signal = signals[0]
-name = signal.name
-start_bit = signal.start
-length = signal.length
-
-decode_data = signal.decode(raw_data)
-print(decode_data)
-
-# message = db.get_message_by_name('BMS_CellVoltage_1')
-# signal_value = message.decode(raw_data)
-# print(signal_value)
+class scud_can_log_convert(object):
+    def __init__(self):
+        self.
