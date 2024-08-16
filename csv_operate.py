@@ -212,13 +212,13 @@ def combine_utf8_csv_log_files(
     csv_log_files_path, csv_log_files_list, csv_file_after_combined
 ):
     data = pd.DataFrame()
-    for file_path in csv_log_files_list:
-        df = pd.read_csv(file_path, encoding="utf-8")
+    for csv_log_file in csv_log_files_list:
+        df = pd.read_csv(csv_log_files_path + csv_log_file, encoding="utf-8")
         data = pd.concat([data, df])
 
-    # ÖØĞÂÉèÖÃË÷Òı ´Ó0¿ªÊ¼
+    # é‡æ–°è®¾ç½®ç´¢å¼• ä»0å¼€å§‹
     data.reset_index(drop=True, inplace=True)
-    # ½«ºÏ²¢µÄdata´æ´¢
+    # å°†åˆå¹¶çš„dataå­˜å‚¨
     data.to_csv(
         csv_log_files_path + csv_file_after_combined, index=False, encoding="utf-8"
     )
@@ -228,13 +228,13 @@ def combine_utf8_sig_csv_log_files(
     csv_log_files_path, csv_log_files_list, csv_file_after_combined
 ):
     data = pd.DataFrame()
-    for file_path in csv_log_files_list:
-        df = pd.read_csv(file_path, encoding="utf-8-sig")
+    for csv_log_file in csv_log_files_list:
+        df = pd.read_csv(csv_log_files_path + csv_log_file, encoding="utf-8-sig")
         data = pd.concat([data, df])
 
-    # ÖØĞÂÉèÖÃË÷Òı ´Ó0¿ªÊ¼
+    # é‡æ–°è®¾ç½®ç´¢å¼• ä»0å¼€å§‹
     data.reset_index(drop=True, inplace=True)
-    # ½«ºÏ²¢µÄdata´æ´¢
+    # å°†åˆå¹¶çš„dataå­˜å‚¨
     data.to_csv(
         csv_log_files_path + csv_file_after_combined, index=False, encoding="utf-8"
     )
@@ -244,13 +244,13 @@ def combine_gb2312_csv_log_files(
     csv_log_files_path, csv_log_files_list, csv_file_after_combined
 ):
     data = pd.DataFrame()
-    for file_path in csv_log_files_list:
-        df = pd.read_csv(file_path, encoding="gb2312")
+    for csv_log_file in csv_log_files_list:
+        df = pd.read_csv(csv_log_files_path + csv_log_file, encoding="gb2312")
         data = pd.concat([data, df])
 
-    # ÖØĞÂÉèÖÃË÷Òı ´Ó0¿ªÊ¼
+    # é‡æ–°è®¾ç½®ç´¢å¼• ä»0å¼€å§‹
     data.reset_index(drop=True, inplace=True)
-    # ½«ºÏ²¢µÄdata´æ´¢
+    # å°†åˆå¹¶çš„dataå­˜å‚¨
     data.to_csv(
         csv_log_files_path + csv_file_after_combined, index=False, encoding="utf-8"
     )

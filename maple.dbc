@@ -33,7 +33,7 @@ NS_ :
 
 BS_:
 
-BU_: BMS Logger MfgTest OEM DU FastSensors HMI
+BU_: BMS Logger MfgTest TCS OEM DU FastSensors HMI
 VAL_TABLE_ BatteryState 6 "Charging" 5 "Protection" 4 "Active" 3 "Predischarge" 2 "Idle" 1 "Sleep" 0 "Shutdown" ;
 VAL_TABLE_ BatteryCommand 6 "Charging" 4 "Active" 2 "Idle" 1 "Sleep" 0 "Shutdown" ;
 VAL_TABLE_ CAN_Mode 2 "BusOff" 1 "Passive" 0 "Active" ;
@@ -119,9 +119,6 @@ BO_ 777 BMS_VoltageCurrentAdc: 8 BMS
 BO_ 778 BMS_AfeMeasurements: 4 BMS
  SG_ BMS_AfePackVoltage : 0|16@1+ (0.002,0) [0|131.07] "V"  Logger
  SG_ BMS_AfeLoadVoltage : 16|16@1+ (0.002,0) [0|131.07] "V"  Logger
-
-BO_ 779 HMI_DUReq_20: 1 HMI
- SG_ HMI_BatteryCfetControl : 0|8@1+ (1,0) [0|255] ""  BMS
 
 BO_ 782 OEM_Brose_DiagnosticProtocol_0x30E: 8 OEM
 
@@ -462,6 +459,72 @@ BO_ 1286 BMS_MinMaxCellVoltageTemperature: 7 BMS
  SG_ BMS_MinCellTemp : 40|8@1- (1,50) [-78|177] "degC"  Logger
  SG_ BMS_MaxCellTemp : 48|8@1- (1,50) [-78|177] "degC"  Logger
 
+BO_ 1287 BMS_TCS_IntExposureMatrix: 8 BMS
+ SG_ BMS_TCS_IntExposure_1 : 0|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_2 : 1|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_3 : 2|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_4 : 3|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_5 : 4|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_6 : 5|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_7 : 6|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_8 : 7|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_9 : 8|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_10 : 9|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_11 : 10|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_12 : 11|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_13 : 12|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_14 : 13|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_15 : 14|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_16 : 15|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_17 : 16|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_18 : 17|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_19 : 18|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_20 : 19|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_21 : 20|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_22 : 21|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_23 : 22|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_24 : 23|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_25 : 24|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_26 : 25|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_27 : 26|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_28 : 27|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_29 : 28|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_30 : 29|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_31 : 30|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_32 : 31|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_33 : 32|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_34 : 33|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_35 : 34|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_36 : 35|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_37 : 36|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_38 : 37|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_39 : 38|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_40 : 39|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_41 : 40|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_42 : 41|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_43 : 42|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_44 : 43|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_45 : 44|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_46 : 45|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_47 : 46|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_48 : 47|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_49 : 48|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_50 : 49|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_51 : 50|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_52 : 51|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_53 : 52|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_54 : 53|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_55 : 54|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_56 : 55|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_57 : 56|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_58 : 57|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_59 : 58|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_60 : 59|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_61 : 60|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_62 : 61|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_63 : 62|1@1+ (1,0) [0|0] ""  TCS
+ SG_ BMS_TCS_IntExposure_64 : 63|1@1+ (1,0) [0|0] ""  TCS
+
 BO_ 1288 BMS_StateOfHealth: 8 BMS
  SG_ BMS_DesignCapacity : 0|16@1+ (0.001,0) [0|65.535] "Ah"  Logger,Logger
  SG_ BMS_FullChargeCapacity : 16|16@1+ (0.001,0) [0|65.535] "Ah"  Logger,Logger
@@ -487,6 +550,28 @@ BO_ 1291 BMS_MinMaxCellEnergy: 8 BMS
  SG_ BMS_MaxCellSOC : 48|8@1+ (0.5,0) [0|100] "%"  Logger
  SG_ BMS_MinSOCCellNumber : 56|4@1+ (1,0) [0|15] ""  Logger
  SG_ BMS_MaxSOCCellNumber : 60|4@1+ (1,0) [0|15] ""  Logger
+
+BO_ 1292 BMS_BatteryDropData: 8 BMS
+ SG_ BMS_BatteryDropDataId M : 0|8@1+ (1,0) [0|255] ""  Logger
+ SG_ BMS_BatteryDrop_LifetimeMaxDropDistance m0 : 8|8@1+ (1,0) [0|255] "inch"  Logger
+ SG_ BMS_BatteryDrop_LifetimeMaxDropDeltaTimeAfterCharging m0 : 16|16@1+ (1,0) [0|65535] "minutes"  Logger
+ SG_ BMS_BatteryDrop_LifetimeMaxDropDeltaTimeAfterVehicleRemoval m0 : 32|16@1+ (1,0) [0|65535] "minutes"  Logger
+ SG_ BMS_BatteryDrop_LifetimeTotalDrops m0 : 48|16@1+ (1,0) [0|65535] "count"  Logger
+ SG_ BMS_BatteryDrop_DropDistance_LastDrop1 m2 : 8|8@1+ (1,0) [0|255] "inch"  Logger
+ SG_ BMS_BatteryDrop_DeltaTimeAfterCharging_LastDrop1 m2 : 16|16@1+ (1,0) [0|65535] "minutes"  Logger
+ SG_ BMS_BatteryDrop_DeltaTimeAfterVehicleRemoval_LastDrop1 m2 : 32|16@1+ (1,0) [0|65535] "minutes"  Logger
+ SG_ BMS_BatteryDrop_DropDistance_LastDrop2 m4 : 8|8@1+ (1,0) [0|255] "inch"  Logger
+ SG_ BMS_BatteryDrop_DeltaTimeAfterCharging_LastDrop2 m4 : 16|16@1+ (1,0) [0|65535] "minutes"  Logger
+ SG_ BMS_BatteryDrop_DeltaTimeAfterVehicleRemoval_LastDrop2 m4 : 32|16@1+ (1,0) [0|65535] "minutes"  Logger
+ SG_ BMS_BatteryDrop_DropDistance_LastDrop3 m6 : 8|8@1+ (1,0) [0|255] "inch"  Logger
+ SG_ BMS_BatteryDrop_DeltaTimeAfterCharging_LastDrop3 m6 : 16|16@1+ (1,0) [0|65535] "minutes"  Logger
+ SG_ BMS_BatteryDrop_DeltaTimeAfterVehicleRemoval_LastDrop3 m6 : 32|16@1+ (1,0) [0|65535] "minutes"  Logger
+ SG_ BMS_BatteryDrop_DropDistance_LastDrop4 m8 : 8|8@1+ (1,0) [0|255] "inch"  Logger
+ SG_ BMS_BatteryDrop_DeltaTimeAfterCharging_LastDrop4 m8 : 16|16@1+ (1,0) [0|65535] "minutes"  Logger
+ SG_ BMS_BatteryDrop_DeltaTimeAfterVehicleRemoval_LastDrop4 m8 : 32|16@1+ (1,0) [0|65535] "minutes"  Logger
+ SG_ BMS_BatteryDrop_DropDistance_LastDrop5 m10 : 8|8@1+ (1,0) [0|255] "inch"  Logger
+ SG_ BMS_BatteryDrop_DeltaTimeAfterCharging_LastDrop5 m10 : 16|16@1+ (1,0) [0|65535] "minutes"  Logger
+ SG_ BMS_BatteryDrop_DeltaTimeAfterVehicleRemoval_LastDrop5 m10 : 32|16@1+ (1,0) [0|65535] "minutes"  Logger
 
 BO_ 1293 BMS_PowerMetrics: 8 BMS
  SG_ BMS_PowerMetricsMultiplexor M : 0|8@1+ (1,0) [0|255] ""  Logger
@@ -692,6 +777,142 @@ BO_ 1374 OEM_Brose_Reserved_0x55E: 8 OEM
 
 BO_ 1375 OEM_Brose_Reserved_0x55F: 8 OEM
 
+BO_ 1504 TCS_Variable_Ints: 8 TCS
+ SG_ TCS_Variable_Int_Id M : 0|8@1+ (1,0) [0|255] ""  BMS
+ SG_ TCS_Variable_Int_Count m0 : 8|16@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_1_Name m1 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_1_Value m1 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_2_Name m2 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_2_Value m2 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_3_Name m3 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_3_Value m3 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_4_Name m4 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_4_Value m4 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_5_Name m5 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_5_Value m5 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_6_Name m6 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_6_Value m6 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_7_Name m7 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_7_Value m7 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_8_Name m8 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_8_Value m8 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_9_Name m9 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_9_Value m9 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_10_Name m10 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_10_Value m10 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_11_Name m11 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_11_Value m11 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_12_Name m12 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_12_Value m12 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_13_Name m13 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_13_Value m13 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_14_Name m14 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_14_Value m14 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_15_Name m15 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_15_Value m15 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_16_Name m16 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_16_Value m16 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_17_Name m17 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_17_Value m17 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_18_Name m18 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_18_Value m18 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_19_Name m19 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_19_Value m19 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_20_Name m20 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_20_Value m20 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_21_Name m21 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_21_Value m21 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_22_Name m22 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_22_Value m22 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_23_Name m23 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_23_Value m23 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_24_Name m24 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_24_Value m24 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_25_Name m25 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_25_Value m25 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_26_Name m26 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_26_Value m26 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_27_Name m27 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_27_Value m27 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_28_Name m28 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_28_Value m28 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_29_Name m29 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_29_Value m29 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_30_Name m30 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_30_Value m30 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_31_Name m31 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_31_Value m31 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_32_Name m32 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_32_Value m32 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_33_Name m33 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_33_Value m33 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_34_Name m34 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_34_Value m34 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_35_Name m35 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_35_Value m35 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_36_Name m36 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_36_Value m36 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_37_Name m37 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_37_Value m37 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_38_Name m38 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_38_Value m38 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_39_Name m39 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_39_Value m39 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_40_Name m40 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_40_Value m40 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_41_Name m41 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_41_Value m41 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_42_Name m42 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_42_Value m42 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_43_Name m43 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_43_Value m43 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_44_Name m44 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_44_Value m44 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_45_Name m45 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_45_Value m45 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_46_Name m46 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_46_Value m46 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_47_Name m47 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_47_Value m47 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_48_Name m48 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_48_Value m48 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_49_Name m49 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_49_Value m49 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_50_Name m50 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_50_Value m50 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_51_Name m51 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_51_Value m51 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_52_Name m52 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_52_Value m52 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_53_Name m53 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_53_Value m53 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_54_Name m54 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_54_Value m54 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_55_Name m55 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_55_Value m55 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_56_Name m56 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_56_Value m56 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_57_Name m57 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_57_Value m57 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_58_Name m58 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_58_Value m58 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_59_Name m59 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_59_Value m59 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_60_Name m60 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_60_Value m60 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_61_Name m61 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_61_Value m61 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_62_Name m62 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_62_Value m62 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_63_Name m63 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_63_Value m63 : 32|32@1- (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_64_Name m64 : 8|24@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_Variable_Int_64_Value m64 : 32|32@1- (1,0) [0|0] ""  BMS
+
+BO_ 1505 TCS_Variable_Metadata: 5 TCS
+ SG_ TCS_VariableName_Hash : 0|32@1+ (1,0) [0|0] ""  BMS
+ SG_ TCS_VariablesStatus : 32|8@1+ (1,0) [0|0] ""  BMS
+
 BO_ 1536 BMS_FaultLog: 8 BMS
  SG_ BMS_FaultId M : 0|8@1+ (1,0) [0|255] ""  Logger
  SG_ BMS_FaultPayload m0 : 8|56@1+ (1,0) [0|0] ""  Logger
@@ -876,6 +1097,12 @@ BO_ 1536 BMS_FaultLog: 8 BMS
  SG_ BMS_Log_f036_MinCellTemp m36 : 40|8@1- (1,50) [-78|177] "degC"  Logger
  SG_ BMS_Log_f036_MaxCellTemp m36 : 48|8@1- (1,50) [-78|177] "degC"  Logger
  SG_ BMS_Log_f036_FuseTemp m36 : 56|8@1- (1,50) [-78|177] "degC"  Logger
+ SG_ BMS_Log_f037_BatteryVoltage m37 : 8|8@1+ (0.25,0) [0|63.75] "V"  Logger
+ SG_ BMS_Log_f037_BatteryCurrent m37 : 16|8@1- (1,0) [-128|127] "A"  Logger
+ SG_ BMS_Log_f037_LowPowerBusVoltage m37 : 24|8@1+ (0.25,0) [0|63.75] "V"  Logger
+ SG_ BMS_Log_f037_LowPowerBusCurrent m37 : 32|8@1+ (0.02,0) [0|5.1] "A"  Logger
+ SG_ BMS_Log_f037_ConnectorTemp m37 : 40|8@1- (1,50) [-78|177] "degC"  Logger
+ SG_ BMS_Log_f037_BatteryFuseVoltage m37 : 48|8@1+ (0.25,0) [0|63.75] "V"  Logger
  SG_ BMS_Log_f039_OVTripRegBq769x0 m39 : 8|8@1+ (1,0) [0|255] ""  Logger
  SG_ BMS_Log_f039_UVTripRegBq769x0 m39 : 16|8@1+ (1,0) [0|255] ""  Logger
  SG_ BMS_Log_f039_Protect1RegBq769x0 m39 : 24|8@1+ (1,0) [0|255] ""  Logger
@@ -925,6 +1152,13 @@ BO_ 1536 BMS_FaultLog: 8 BMS
  SG_ BMS_Log_f054_BatteryCurrent m54 : 16|16@1- (0.01,0) [-327.68|327.67] "A"  Logger
  SG_ BMS_Log_f054_MinCellVoltage m54 : 32|16@1+ (0.001,0) [0|65.535] "V"  Logger
  SG_ BMS_Log_f054_MaxCellVoltage m54 : 48|16@1+ (0.001,0) [0|65.535] "V"  Logger
+ SG_ BMS_Log_f055_BatteryVoltage m55 : 8|8@1+ (0.25,0) [0|63.75] "V"  Logger
+ SG_ BMS_Log_f055_BatteryCurrent m55 : 16|8@1- (1,0) [-128|127] "A"  Logger
+ SG_ BMS_Log_f055_LowPowerBusVoltage m55 : 24|8@1+ (0.25,0) [0|63.75] "V"  Logger
+ SG_ BMS_Log_f055_LowPowerBusCurrent m55 : 32|8@1+ (0.02,0) [0|5.1] "A"  Logger
+ SG_ BMS_Log_f055_ConnectorTemp m55 : 40|8@1- (1,50) [-78|177] "degC"  Logger
+ SG_ BMS_Log_f055_BatteryFuseVoltage m55 : 48|8@1+ (0.25,0) [0|63.75] "V"  Logger
+ SG_ BMS_Log_f055_InVehicleDetectState m55 : 56|2@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_Log_f056_BatteryVoltage m56 : 8|8@1+ (0.25,0) [0|63.75] "V"  Logger
  SG_ BMS_Log_f056_BatteryCurrent m56 : 16|8@1- (1,0) [-128|127] "A"  Logger
  SG_ BMS_Log_f056_PackVoltage m56 : 24|8@1+ (0.25,0) [0|63.75] "V"  Logger
@@ -932,9 +1166,6 @@ BO_ 1536 BMS_FaultLog: 8 BMS
  SG_ BMS_Log_f056_FuseTemp m56 : 40|8@1- (1,50) [-78|177] "degC"  Logger
  SG_ BMS_Log_f056_BatteryFuseVoltage m56 : 48|8@1+ (0.25,0) [0|63.75] "V"  Logger
  SG_ BMS_Log_f056_BatteryState m56 : 56|4@1+ (1,0) [0|0] ""  Logger
- SG_ BMS_Log_f059_BatteryCurrent m59 : 16|16@1- (0.01,0) [-327.68|327.67] "A"  Logger
- SG_ BMS_Log_f059_BatteryVoltage m59 : 32|16@1+ (0.001,0) [0|65.535] "V"  Logger
- SG_ BMS_Log_f059_CellTemp m59 : 48|8@1- (0.5,20) [-44|83.5] "degC"  Logger
 
 BO_ 1537 BMS_WarningLog: 8 BMS
  SG_ BMS_WarningId M : 0|8@1+ (1,0) [0|255] ""  Logger
@@ -998,6 +1229,8 @@ BO_ 1537 BMS_WarningLog: 8 BMS
  SG_ BMS_Log_w038_AfeCommLastErrorCode m38 : 40|8@1+ (1,0) [0|255] ""  Logger
  SG_ BMS_Log_w038_AfeCommSyncTimeoutErrors m38 : 48|8@1+ (1,0) [0|255] ""  Logger
  SG_ BMS_Log_w038_AfeCommSyncErrors m38 : 56|8@1+ (1,0) [0|255] ""  Logger
+ SG_ BMS_Log_w041_AccelCommErrorStatus m41 : 8|8@1- (1,0) [-128|127] ""  Logger
+ SG_ BMS_Log_w041_AccelInitFailure m41 : 16|1@1+ (1,0) [0|1] ""  Logger
  SG_ BMS_Log_w042_HumiditySensorCommErrorStatus m42 : 8|8@1- (1,0) [-128|127] ""  Logger
  SG_ BMS_Log_w042_HumiditySensorInitFailure m42 : 16|1@1+ (1,0) [0|1] ""  Logger
  SG_ BMS_Log_w051_SOC m51 : 8|8@1+ (0.5,0) [0|100] "Pct"  Logger
@@ -1050,6 +1283,7 @@ BO_ 1540 BMS_FaultMatrix: 8 BMS
  SG_ BMS_f034_HW_2nd_Prot_Fault_Asserted : 34|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f035_SW_Connector_OT : 35|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f036_SW_Host_MCU_OT : 36|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_f037_SW_Low_Power_Bus_OCD : 37|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f039_AFE_Protection_Mismatch : 39|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f040_AFE_OTP_Memory_PF : 40|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f041_AFE_ROM_PF : 41|1@1+ (1,0) [0|0] ""  Logger
@@ -1065,10 +1299,10 @@ BO_ 1540 BMS_FaultMatrix: 8 BMS
  SG_ BMS_f052_SW_Predischarge_Dfet_Open : 52|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f053_SW_Battery_Blocked : 53|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f054_SW_TrickleChargeExceeded : 54|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_f055_SW_PF_Low_Power_Bus_Leakage : 55|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f056_HW_PF_Passive_Fuse_Blown : 56|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f057_SW_Humidity_Sensor_MIA : 57|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f058_SW_Predischarge_Fail_Max_Attempts : 58|1@1+ (1,0) [0|0] ""  Logger
- SG_ BMS_f059_SW_Idle_OCD : 59|1@1+ (1,0) [0|0] ""  Logger
 
 BO_ 1541 BMS_WarningMatrix: 8 BMS
  SG_ BMS_w005_SW_Vref_Irrational : 5|1@1+ (1,0) [0|0] ""  Logger
@@ -1084,6 +1318,7 @@ BO_ 1541 BMS_WarningMatrix: 8 BMS
  SG_ BMS_w036_SW_All_Battery_Temp_Irrational : 36|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_w037_SW_FET_Temp_Irrational : 37|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_w038_SW_AFE_Degraded_Comms : 38|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_w041_SW_Accelerometer_Degraded_Comms : 41|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_w042_SW_Humidity_Sensor_Degraded_Comms : 42|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_w051_SW_Invalid_Regen : 51|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_w061_WatchdogTaskStatusUnknown : 61|1@1+ (1,0) [0|0] ""  Logger
@@ -1297,6 +1532,10 @@ BO_ 1795 BMS_BleedState: 2 BMS
  SG_ BMS_BleedResistorState_8 : 7|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_BleedResistorState_9 : 8|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_BleedResistorState_10 : 9|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_BleedResistorState_11 : 10|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_BleedResistorState_12 : 11|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_BleedResistorState_13 : 12|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_BleedResistorState_14 : 13|1@1+ (1,0) [0|0] ""  Logger
 
 BO_ 1796 BMS_TestLog: 8 BMS
  SG_ BMS_TestLogId M : 0|8@1+ (1,0) [0|255] ""  Logger
@@ -1306,6 +1545,14 @@ BO_ 1796 BMS_TestLog: 8 BMS
  SG_ BMS_TestLog_Capacity_PreviousFullChargeCapacity m0 : 40|16@1+ (0.001,0) [0|65.535] "Ah"  Logger
  SG_ BMS_TestLog_Capacity_RestState m0 : 56|4@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_TestLog_Capacity_CapacityState m0 : 60|4@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_TestLog_AfeCommError_ControllerState m1 : 8|8@1+ (1,0) [0|255] ""  Logger
+ SG_ BMS_TestLog_AfeCommError_ControllerErrorCode m1 : 16|32@1+ (1,0) [0|4294967295] ""  Logger
+ SG_ BMS_TestLog_AfeCommError_ControllerXferCount m1 : 48|16@1+ (1,0) [0|65535] ""  Logger
+ SG_ BMS_TestLog_AfeCommError_ControllerRegisterISR m2 : 8|32@1+ (1,0) [0|4294967295] ""  Logger
+ SG_ BMS_TestLog_AfeCommError_ControllerPreviousState m2 : 40|8@1+ (1,0) [0|255] ""  Logger
+ SG_ BMS_TestLog_AfeCommError_ControllerXferSize m2 : 48|16@1+ (1,0) [0|65535] ""  Logger
+ SG_ BMS_TestLog_AfeCommError_ControllerRegisterCR1 m3 : 8|32@1+ (1,0) [0|4294967295] ""  Logger
+ SG_ BMS_TestLog_AfeCommError_ControllerRegisterCR2 m4 : 8|32@1+ (1,0) [0|4294967295] ""  Logger
  SG_ BMS_TestLog_AfeCommError_TotalErrors m5 : 8|32@1+ (1,0) [0|4294967295] ""  Logger
  SG_ BMS_TestLog_AfeCommError_ErrorMask m5 : 40|16@1+ (1,0) [0|65535] ""  Logger
  SG_ BMS_TestLog_Capacity_NumEstimations m6 : 8|16@1+ (1,0) [0|65535] ""  Logger
@@ -1388,7 +1635,6 @@ BA_ "GenMsgCycleTime" BO_ 771 100;
 BA_ "GenMsgCycleTime" BO_ 772 100;
 BA_ "GenMsgCycleTime" BO_ 777 100;
 BA_ "GenMsgCycleTime" BO_ 778 100;
-BA_ "GenMsgCycleTime" BO_ 779 100;
 BA_ "GenMsgSendType" BO_ 782 1;
 BA_ "GenMsgSendType" BO_ 783 1;
 BA_ "GenMsgSendType" BO_ 784 1;
@@ -1429,7 +1675,7 @@ BA_ "GenMsgSendType" BO_ 832 1;
 BA_ "GenMsgSendType" BO_ 833 1;
 BA_ "GenMsgCycleTime" BO_ 839 1000;
 BA_ "GenMsgCycleTime" BO_ 840 1000;
-BA_ "GenMsgCycleTime" BO_ 841 10000;
+BA_ "GenMsgCycleTime" BO_ 841 100;
 BA_ "GenMsgSendType" BO_ 849 1;
 BA_ "GenMsgCycleTime" BO_ 1024 100;
 BA_ "GenMsgCycleTime" BO_ 1025 100;
@@ -1529,10 +1775,12 @@ BA_ "GenMsgSendType" BO_ 1283 1;
 BA_ "GenMsgSendType" BO_ 1284 1;
 BA_ "GenMsgSendType" BO_ 1285 1;
 BA_ "GenMsgCycleTime" BO_ 1286 1000;
+BA_ "GenMsgCycleTime" BO_ 1287 10000;
 BA_ "GenMsgCycleTime" BO_ 1288 10000;
 BA_ "GenMsgCycleTime" BO_ 1289 1000;
 BA_ "GenMsgCycleTime" BO_ 1290 1000;
 BA_ "GenMsgCycleTime" BO_ 1291 10000;
+BA_ "GenMsgCycleTime" BO_ 1292 10000;
 BA_ "GenMsgCycleTime" BO_ 1293 1000;
 BA_ "GenMsgCycleTime" BO_ 1294 10000;
 BA_ "GenMsgCycleTime" BO_ 1295 10000;
@@ -1616,6 +1864,8 @@ BA_ "GenMsgSendType" BO_ 1372 1;
 BA_ "GenMsgSendType" BO_ 1373 1;
 BA_ "GenMsgSendType" BO_ 1374 1;
 BA_ "GenMsgSendType" BO_ 1375 1;
+BA_ "GenMsgCycleTime" BO_ 1504 10000;
+BA_ "GenMsgCycleTime" BO_ 1505 10000;
 BA_ "GenMsgSendType" BO_ 1536 4;
 BA_ "GenMsgSendType" BO_ 1537 4;
 BA_ "GenMsgSendType" BO_ 1538 4;
@@ -1726,12 +1976,12 @@ VAL_ 772 BMS_DischargeFET 1 "Closed" 0 "Open" ;
 VAL_ 772 BMS_PrechargeFET 1 "Closed" 0 "Open" ;
 VAL_ 772 BMS_PredischargeFET 1 "Closed" 0 "Open" ;
 VAL_ 772 BMS_AfeMode 4 "Shutdown" 3 "DeepSleep" 2 "Sleep" 1 "Normal" 0 "Reserved" ;
-VAL_ 779 HMI_BatteryCfetControl 165 "Enable" 90 "Disable" ;
 VAL_ 839 PT_BatteryCommand 7 "Shutdown" 6 "Charging" 4 "Active" 2 "Idle" 1 "Sleep" 0 "Reserved" ;
 VAL_ 841 PT_CanbusState 3 "Standby" 2 "On" 1 "Off" 0 "Unknown" ;
 VAL_ 1024 BMS_Brose_BatteryCommandRegisters_CurrentReduction 0 "Power Not Reduced" 1 "Power Reduced To 75 Percent" 2 "Power Reduced To 50 Percent" 3 "Power Reduced To 25 Percent" ;
-VAL_ 1536 BMS_FaultId 0 "BMS_f000_AlertNumberNotSet" 1 "BMS_f001_HW_CUV" 2 "BMS_f002_HW_COV" 3 "BMS_f003_HW_OCC" 4 "BMS_f004_HW_OCD" 5 "BMS_f005_HW_SCD" 8 "BMS_f008_HW_OTD" 9 "BMS_f009_HW_UTD" 10 "BMS_f010_HW_PF_CUV" 11 "BMS_f011_HW_PF_COV" 12 "BMS_f012_SW_PF_COT" 13 "BMS_f013_SW_PF_Voltage_Imbalance" 14 "BMS_f014_SW_PF_FET_Leakage" 15 "BMS_f015_SW_PF_FET_OT" 16 "BMS_f016_SW_CUV" 17 "BMS_f017_SW_COV" 18 "BMS_f018_SW_PF_Cell_Overdischarged" 19 "BMS_f019_SW_Battery_UV" 20 "BMS_f020_SW_Battery_OV" 21 "BMS_f021_SW_OCC" 22 "BMS_f022_SW_OCD" 23 "BMS_f023_SW_OTC" 24 "BMS_f024_SW_OTD" 25 "BMS_f025_SW_UTC" 26 "BMS_f026_SW_UTD" 29 "BMS_f029_SW_Voltage_Imbalance" 30 "BMS_f030_SW_FET_OT" 31 "BMS_f031_HW_FET_OT" 32 "BMS_f032_SW_PF_AFE_MIA" 34 "BMS_f034_HW_2nd_Prot_Fault_Asserted" 35 "BMS_f035_SW_Connector_OT" 36 "BMS_f036_SW_Host_MCU_OT" 39 "BMS_f039_AFE_Protection_Mismatch" 40 "BMS_f040_AFE_OTP_Memory_PF" 41 "BMS_f041_AFE_ROM_PF" 42 "BMS_f042_AFE_Internal_PF" 43 "BMS_f043_AFE_Commanded_PF" 44 "BMS_f044_AFE_Host_Watchdog" 46 "BMS_f046_AFE_Internal_UT" 47 "BMS_f047_AFE_Internal_OT" 48 "BMS_f048_SW_Pack_Voltage_Present" 49 "BMS_f049_SW_Predischarge_Fail_Short_Circuit" 50 "BMS_f050_SW_Predischarge_Fail_Voltage_Diff" 51 "BMS_f051_SW_Predischarge_Fail_Open_Circuit" 52 "BMS_f052_SW_Predischarge_Dfet_Open" 53 "BMS_f053_SW_Battery_Blocked" 54 "BMS_f054_SW_TrickleChargeExceeded" 56 "BMS_f056_HW_PF_Passive_Fuse_Blown" 57 "BMS_f057_SW_Humidity_Sensor_MIA" 58 "BMS_f058_SW_Predischarge_Fail_Max_Attempts" 59 "BMS_f059_SW_Idle_OCD" ;
-VAL_ 1537 BMS_WarningId 0 "BMS_w000_AlertNumberNotSet" 5 "BMS_w005_SW_Vref_Irrational" 8 "BMS_w008_HW_Regulator_Voltage_Irrational" 9 "BMS_w009_HW_OTC" 10 "BMS_w010_HW_UTC" 11 "BMS_w011_SW_Internal_Flash" 19 "BMS_w019_SW_Temp_Gradient" 20 "BMS_w020_SW_Connector_OT" 32 "BMS_w032_SW_PWT_MIA" 33 "BMS_w033_SW_Voltage_Sensor_Irrational" 35 "BMS_w035_SW_Single_Battery_Temp_Irrational" 36 "BMS_w036_SW_All_Battery_Temp_Irrational" 37 "BMS_w037_SW_FET_Temp_Irrational" 38 "BMS_w038_SW_AFE_Degraded_Comms" 42 "BMS_w042_SW_Humidity_Sensor_Degraded_Comms" 51 "BMS_w051_SW_Invalid_Regen" 61 "BMS_w061_WatchdogTaskStatusUnknown" ;
+VAL_ 1505 TCS_VariablesStatus 0 "Unset" 1 "OK" 2 "ReadError" ;
+VAL_ 1536 BMS_FaultId 0 "BMS_f000_AlertNumberNotSet" 1 "BMS_f001_HW_CUV" 2 "BMS_f002_HW_COV" 3 "BMS_f003_HW_OCC" 4 "BMS_f004_HW_OCD" 5 "BMS_f005_HW_SCD" 8 "BMS_f008_HW_OTD" 9 "BMS_f009_HW_UTD" 10 "BMS_f010_HW_PF_CUV" 11 "BMS_f011_HW_PF_COV" 12 "BMS_f012_SW_PF_COT" 13 "BMS_f013_SW_PF_Voltage_Imbalance" 14 "BMS_f014_SW_PF_FET_Leakage" 15 "BMS_f015_SW_PF_FET_OT" 16 "BMS_f016_SW_CUV" 17 "BMS_f017_SW_COV" 18 "BMS_f018_SW_PF_Cell_Overdischarged" 19 "BMS_f019_SW_Battery_UV" 20 "BMS_f020_SW_Battery_OV" 21 "BMS_f021_SW_OCC" 22 "BMS_f022_SW_OCD" 23 "BMS_f023_SW_OTC" 24 "BMS_f024_SW_OTD" 25 "BMS_f025_SW_UTC" 26 "BMS_f026_SW_UTD" 29 "BMS_f029_SW_Voltage_Imbalance" 30 "BMS_f030_SW_FET_OT" 31 "BMS_f031_HW_FET_OT" 32 "BMS_f032_SW_PF_AFE_MIA" 34 "BMS_f034_HW_2nd_Prot_Fault_Asserted" 35 "BMS_f035_SW_Connector_OT" 36 "BMS_f036_SW_Host_MCU_OT" 37 "BMS_f037_SW_Low_Power_Bus_OCD" 39 "BMS_f039_AFE_Protection_Mismatch" 40 "BMS_f040_AFE_OTP_Memory_PF" 41 "BMS_f041_AFE_ROM_PF" 42 "BMS_f042_AFE_Internal_PF" 43 "BMS_f043_AFE_Commanded_PF" 44 "BMS_f044_AFE_Host_Watchdog" 46 "BMS_f046_AFE_Internal_UT" 47 "BMS_f047_AFE_Internal_OT" 48 "BMS_f048_SW_Pack_Voltage_Present" 49 "BMS_f049_SW_Predischarge_Fail_Short_Circuit" 50 "BMS_f050_SW_Predischarge_Fail_Voltage_Diff" 51 "BMS_f051_SW_Predischarge_Fail_Open_Circuit" 52 "BMS_f052_SW_Predischarge_Dfet_Open" 53 "BMS_f053_SW_Battery_Blocked" 54 "BMS_f054_SW_TrickleChargeExceeded" 55 "BMS_f055_SW_PF_Low_Power_Bus_Leakage" 56 "BMS_f056_HW_PF_Passive_Fuse_Blown" 57 "BMS_f057_SW_Humidity_Sensor_MIA" 58 "BMS_f058_SW_Predischarge_Fail_Max_Attempts" ;
+VAL_ 1537 BMS_WarningId 0 "BMS_w000_AlertNumberNotSet" 5 "BMS_w005_SW_Vref_Irrational" 8 "BMS_w008_HW_Regulator_Voltage_Irrational" 9 "BMS_w009_HW_OTC" 10 "BMS_w010_HW_UTC" 11 "BMS_w011_SW_Internal_Flash" 19 "BMS_w019_SW_Temp_Gradient" 20 "BMS_w020_SW_Connector_OT" 32 "BMS_w032_SW_PWT_MIA" 33 "BMS_w033_SW_Voltage_Sensor_Irrational" 35 "BMS_w035_SW_Single_Battery_Temp_Irrational" 36 "BMS_w036_SW_All_Battery_Temp_Irrational" 37 "BMS_w037_SW_FET_Temp_Irrational" 38 "BMS_w038_SW_AFE_Degraded_Comms" 41 "BMS_w041_SW_Accelerometer_Degraded_Comms" 42 "BMS_w042_SW_Humidity_Sensor_Degraded_Comms" 51 "BMS_w051_SW_Invalid_Regen" 61 "BMS_w061_WatchdogTaskStatusUnknown" ;
 VAL_ 1538 BMS_DiagnosticId 0 "BMS_d000_AlertNumberNotSet" 1 "BMS_d001_ECU_Reset" ;
 VAL_ 1795 BMS_BleedResistorState_1 1 "Bleeding" 0 "Not Bleeding" ;
 VAL_ 1795 BMS_BleedResistorState_2 1 "Bleeding" 0 "Not Bleeding" ;
@@ -1743,6 +1993,10 @@ VAL_ 1795 BMS_BleedResistorState_7 1 "Bleeding" 0 "Not Bleeding" ;
 VAL_ 1795 BMS_BleedResistorState_8 1 "Bleeding" 0 "Not Bleeding" ;
 VAL_ 1795 BMS_BleedResistorState_9 1 "Bleeding" 0 "Not Bleeding" ;
 VAL_ 1795 BMS_BleedResistorState_10 1 "Bleeding" 0 "Not Bleeding" ;
+VAL_ 1795 BMS_BleedResistorState_11 1 "Bleeding" 0 "Not Bleeding" ;
+VAL_ 1795 BMS_BleedResistorState_12 1 "Bleeding" 0 "Not Bleeding" ;
+VAL_ 1795 BMS_BleedResistorState_13 1 "Bleeding" 0 "Not Bleeding" ;
+VAL_ 1795 BMS_BleedResistorState_14 1 "Bleeding" 0 "Not Bleeding" ;
 VAL_ 1802 MFG_BatteryCommand 0 "NoAction" 1 "LatchActive" 2 "ClearFaults" 3 "AllowDischargeForOvRecovery" ;
 VAL_ 2002 MfgTest_MfgDataCanNode 6 "CL" 5 "TM" 4 "Logger" 3 "PT" 2 "CHG" 1 "MC" 0 "BMS" ;
 VAL_ 2002 MfgTest_MfgDataType 2 "PcbaString" 1 "MfgData" 0 "SerialNumberString" ;
