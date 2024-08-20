@@ -41,7 +41,9 @@ class scud_can_log_convert(object):
 
     # combined all raw logs to one
     def multiple_scud_logs_combine(self):
-        combine_gb2312_csv_log_files(
+
+        # combine_gb2312_csv_log_files(
+        combine_utf8_csv_log_files(
             self.raw_log_file_path,
             self.raw_logs_list,
             self.file_name_combined_logs,
@@ -149,7 +151,7 @@ class scud_can_log_convert(object):
 if __name__ == "__main__":
     # 指定要合并的文件名列表，无需指令路径
     raw_log_list = [
-        "PACK1-1955.csv",
+        "31V04_pack1_can.csv",
         # 'pack2.csv',
         # 'pack3.csv',
         # 'pack4.csv',
@@ -158,15 +160,15 @@ if __name__ == "__main__":
 
     scud_can_log_convert = scud_can_log_convert(
         # 指定用于解析的DBC文件的路径
-        dbc_file_full_path="./maple.dbc",
+        dbc_file_full_path="./dvt2_maple.dbc",
         # 指定需要解析的原始CAN log的路径
-        raw_log_file_path="./fuse_blown_reproduce_0813/6th_pack1_tets(2nd_HW_Protected)/",
+        raw_log_file_path="./fuse_blown_reproduce_0816/test9_logs/",
         # 指定需要解析的原始CAN log文件名列表
         raw_logs_list=raw_log_list,
         # 当有多个文件需要合并时，这里指定合并之后的文件名(为了兼容单个文件的情况，也需要手动来制定)
-        file_name_combined_logs="PACK1-1955_cb.csv",
+        file_name_combined_logs="31V04_pack1_can_cb.csv",
         # 指定解析文件路径及名称
-        file_path_parsed="./fuse_blown_reproduce_0813/6th_pack1_tets(2nd_HW_Protected)/PACK1-1955_PARSED.csv",
+        file_path_parsed="./fuse_blown_reproduce_0816/test9_logs/31V04_pack1_can_PARSED.csv",
     )
 
     # 多个raw CAN logs文件合并,由于SCUD提供raw CAN log的csv文件都是gb2312进行编码的, 读取gb2312编码的CAN log且合并之后会转存为utf-8格式csv
