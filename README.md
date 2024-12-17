@@ -1,5 +1,7 @@
 # parse_can_frame_via_dbc
-parse SCUD CAN data log according to dbc file
+1. porting from Ion's script, and fixed some standard frame "unable to convert" issue
+2. parse SCUD CAN data log according to dbc file
+3. covered all kinds of SCUD CAN log file so far
 
 # Notes
 1. generally SCUD used 2 types of application to capture CAN log
