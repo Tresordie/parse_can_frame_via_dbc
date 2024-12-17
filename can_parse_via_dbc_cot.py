@@ -108,14 +108,18 @@ class scud_can_log_convert(object):
         df = pd.read_csv(self.full_path_combined_logs)
 
         df = df[df["Direction"] == "Receive"]
-        df["Time Stamp"] = df["Time Stamp"].str[:-2]
-        df["Time Stamp"] = pd.to_datetime(df["Time Stamp"], format="%H:%M:%S.%f")
+        # df["Time Stamp"] = df["Time Stamp"].str[:-2]
+        df["Time Stamp"] = df["Time Stamp"] * 1000
+
+        # df["Time Stamp"] = pd.to_datetime(df["Time Stamp"], format="%H:%M:%S.%f")
 
         # 在原有data frame的基础上添加了df['Test Time (ms)']的新列，获取以ms为单位的时间，在最后添加了新列 ‘Test Time (ms)’
         # astype进行数据类型转换
-        df["Test Time (ms)"] = (df["Time Stamp"] - df["Time Stamp"].iloc[0]).astype(
-            "timedelta64[ms]"
-        )
+        # df["Test Time (ms)"] = (df["Time Stamp"] - df["Time Stamp"].iloc[0]).astype(
+        #     "timedelta64[ms]"
+        # )
+
+        df["Test Time (ms)"] = df["Time Stamp"] - df["Time Stamp"].iloc[0]
 
         # 将dbc文件中所有的messages的name组成一个list赋值给messages
         self.dbc_message_list = [msg.name for msg in db.messages]
@@ -163,7 +167,7 @@ if __name__ == "__main__":
 
     scud_can_log_convert = scud_can_log_convert(
         # 指定用于解析的DBC文件的路径
-        dbc_file_full_path="./maple.dbc",
+        dbc_file_full_path="./maple_202424100.dbc",
         # 指定需要解析的原始CAN log的路径
         raw_log_file_path="./",
         # 指定需要解析的原始CAN log文件名列表
