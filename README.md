@@ -26,13 +26,16 @@ parse SCUD CAN data log according to dbc file
 5. sometimes SCUD split CAN logs to several parts because long time capture, we need to combine all parts CAN logs to one
 
 6. how many CAN logs captured need to be combined as one, add these CAN log csv files name into the raw_log_list. for example, I want to combine 'pack1.csv', 'pack2.csv', 'pack3.csv' in current folder
+   ```python
     raw_log_list = [
         "pack1.csv",
         'pack2.csv',
         'pack3.csv',
     ]
+    ```
 
 7. create a class for can log parse, for example as below:
+```python
     scud_can_log_convert = scud_can_log_convert(
         dbc_file_full_path="./maple_202424100.dbc",     # specify dbc file path used
         raw_log_file_path="./",                         # CAN log folder path(e.g., current folder)
@@ -41,3 +44,4 @@ parse SCUD CAN data log according to dbc file
         file_path_parsed="./pack_PARSED.csv",           # parsed CAN log file path
         can_application_tool="CANas",                   # CAN application tool used (CANTest, CANas), time stamp different
     )
+```
