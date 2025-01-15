@@ -5,6 +5,7 @@ import csv
 import datetime
 import pandas as pd
 import time
+import os
 
 
 def get_rows_quantity(csv_file):
@@ -219,9 +220,7 @@ def combine_utf8_csv_log_files(
     # 重新设置索引 从0开始
     data.reset_index(drop=True, inplace=True)
     # 将合并的data存储
-    data.to_csv(
-        csv_log_files_path + csv_file_after_combined, index=False, encoding="utf-8"
-    )
+    data.to_csv(csv_file_after_combined, index=False, encoding="utf-8")
 
 
 def combine_utf8_sig_csv_log_files(
@@ -235,9 +234,7 @@ def combine_utf8_sig_csv_log_files(
     # 重新设置索引 从0开始
     data.reset_index(drop=True, inplace=True)
     # 将合并的data存储
-    data.to_csv(
-        csv_log_files_path + csv_file_after_combined, index=False, encoding="utf-8"
-    )
+    data.to_csv(csv_file_after_combined, index=False, encoding="utf-8")
 
 
 def combine_gb2312_csv_log_files(
@@ -251,6 +248,15 @@ def combine_gb2312_csv_log_files(
     # 重新设置索引 从0开始
     data.reset_index(drop=True, inplace=True)
     # 将合并的data存储
-    data.to_csv(
-        csv_log_files_path + csv_file_after_combined, index=False, encoding="utf-8"
-    )
+    data.to_csv(csv_file_after_combined, index=False, encoding="utf-8")
+
+
+def mkdir(path):
+    # print current function name
+    # print(sys._getframe().f_code.co_name)
+    folder = os.path.exists(path)
+    if not folder:
+        # print("folder not exist, creating folder!")
+        os.makedirs(path)
+    # else:
+    #     print("folder exist!")

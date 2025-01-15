@@ -14,6 +14,8 @@ import cantools
 import chardet
 from csv_operate import *
 from tqdm import tqdm
+import re
+import os
 
 
 class scud_can_log_convert(object):
@@ -22,7 +24,7 @@ class scud_can_log_convert(object):
         dbc_file_full_path=None,
         raw_log_file_path=None,
         raw_logs_list=None,
-        file_name_combined_logs=None,
+        file_path_combined_logs=None,
         file_path_parsed=None,
         can_application_tool="CANTest",
     ):
@@ -31,10 +33,7 @@ class scud_can_log_convert(object):
         self.raw_log_file_path = raw_log_file_path
         self.raw_logs_list = raw_logs_list
 
-        self.file_name_combined_logs = file_name_combined_logs
-        self.full_path_combined_logs = (
-            self.raw_log_file_path + self.file_name_combined_logs
-        )
+        self.file_path_combined_logs = file_path_combined_logs
 
         self.file_path_parsed = file_path_parsed
         self.can_application_tool = can_application_tool
@@ -63,28 +62,28 @@ class scud_can_log_convert(object):
             combine_gb2312_csv_log_files(
                 self.raw_log_file_path,
                 self.raw_logs_list,
-                self.file_name_combined_logs,
+                self.file_path_combined_logs,
             )
         elif encoding == "UTF-8":
             print("file encoing with UTF-8")
             combine_utf8_csv_log_files(
                 self.raw_log_file_path,
                 self.raw_logs_list,
-                self.file_name_combined_logs,
+                self.file_path_combined_logs,
             )
         elif encoding == "UTF-8-SIG":
             print("file encoing with UTF-8-SIG")
             combine_utf8_sig_csv_log_files(
                 self.raw_log_file_path,
                 self.raw_logs_list,
-                self.file_name_combined_logs,
+                self.file_path_combined_logs,
             )
         else:
             print("file encoing uncertain!")
 
     # convert Chinese to English
     def convert_can_log_to_en(self):
-        df = pd.read_csv(self.full_path_combined_logs, header=None)
+        df = pd.read_csv(self.file_path_combined_logs, header=None)
         for j in tqdm(range(df.shape[1])):
             if df.iloc[0, j] == "序号":
                 df.iloc[0, j] = "Index"
@@ -106,9 +105,9 @@ class scud_can_log_convert(object):
                 df.iloc[0, j] = "Data Length"
             elif df.iloc[0, j] == "数据(HEX)" or df.iloc[0, j] == "数据":
                 df.iloc[0, j] = "Data(HEX)"
-        df.to_csv(self.full_path_combined_logs, index=False, header=None)
+        df.to_csv(self.file_path_combined_logs, index=False, header=None)
 
-        df = pd.read_csv(self.full_path_combined_logs)
+        df = pd.read_csv(self.file_path_combined_logs)
         for i in tqdm(range(df.shape[0])):
             if df.loc[i, "Direction"] == "接收":
                 df.loc[i, "Direction"] = "Receive"
@@ -131,14 +130,14 @@ class scud_can_log_convert(object):
 
             if df.loc[i, "Type"] == "扩展帧":
                 df.loc[i, "Type"] = "Extended"
-        df.to_csv(self.full_path_combined_logs, index=False)
+        df.to_csv(self.file_path_combined_logs, index=False)
 
     def parse_scud_can_log(self):
         """
         parse SCUD CAN log via corresponding dbc file
         """
         db = cantools.database.load_file(self.dbc_file_full_path)
-        df = pd.read_csv(self.full_path_combined_logs)
+        df = pd.read_csv(self.file_path_combined_logs)
 
         df = df[df["Direction"] == "Receive"]
 
@@ -183,23 +182,90 @@ class scud_can_log_convert(object):
 
 
 if __name__ == "__main__":
+    #######################################################################################################################
+    # single CAN log file parse
+
     # CAN log csv files list need to be combined
     raw_log_list = [
-        "COT_Pack.csv",
-        # 'pack2.csv',
-        # 'pack3.csv',
+        "2#(39976960-40042495).csv",
+        "2#(40042496-40108031).csv",
+        "2#(40108032-40173567).csv",
+        "2#(40173568-40239103).csv",
+        "2#(40239104-40304639).csv",
+        "2#(40304640-40370175).csv",
+        "2#(40370176-40435711).csv",
+        "2#(40435712-40501247).csv",
+        "2#(40501248-40566783).csv",
+        "2#(40566784-40632319).csv",
+        "2#(40632320-40697855).csv",
+        "2#(40697856-40763391).csv",
+        "2#(40763392-40828927).csv",
+        "2#(40828928-40894463).csv",
+        "2#(40894464-40959999).csv",
+        "2#(40960000-41025535).csv",
+        "2#(41025536-41091071).csv",
+        "2#(41091072-41156607).csv",
+        "2#(41156608-41222143).csv",
+        "2#(41222144-41287679).csv",
     ]
+
+    raw_log_file_path = "./12.31/2#/"
+    raw_log_file_parsed_path = raw_log_file_path + "parsed/"
+    mkdir(raw_log_file_parsed_path)
 
     # fmt: off
     scud_can_log_convert = scud_can_log_convert(
-        dbc_file_full_path="./maple_202424100.dbc",     # specify dbc file used
-        raw_log_file_path="./",                         # CAN log folder path
-        raw_logs_list=raw_log_list,                     # CAN log csv files list
-        file_name_combined_logs="pack_cb.csv",          # specify combined CAN log file name
-        file_path_parsed="./pack_PARSED.csv",           # parsed CAN log file path
-        can_application_tool="CANas",                   # CAN application tool used (CANTest, CANas), time stamp different
+        dbc_file_full_path="./maple_20243250.dbc",        # specify dbc file used
+        raw_log_file_path=raw_log_file_path,              # CAN log folder path
+        raw_logs_list=raw_log_list,                       # CAN log csv files list
+        file_path_combined_logs=raw_log_file_parsed_path + (raw_log_list[0].split('.csv'))[0] + '_combined.csv',   # specify combined CAN log file name
+        file_path_parsed=raw_log_file_parsed_path + (raw_log_list[0].split('.csv'))[0] + "_PARSED.csv",  # parsed CAN log file path
+        can_application_tool="CANTest",                   # CAN application tool used (CANTest, CANas), time stamp different
     )
     # fmt: on
+
     scud_can_log_convert.multiple_scud_logs_combine()
     scud_can_log_convert.convert_can_log_to_en()
     scud_can_log_convert.parse_scud_can_log()
+    #######################################################################################################################
+
+    """
+    #######################################################################################################################
+    # multiple CAN log files, select 1pcs to parse each time
+    raw_log_list = []
+    # indicate raw_log_file_path and make dir for parsed file
+    raw_log_file_path = "./12.31/3#/"
+    raw_log_file_parsed_path = raw_log_file_path + "parsed/"
+    mkdir(raw_log_file_parsed_path)
+
+    # created list to store multiple class for CAN log parse
+    file_name_list = os.listdir(raw_log_file_path)
+    scud_can_log_convert_list = [0] * len(file_name_list)
+    temp_raw_log_list = []
+
+    # excluded the combined and parsed file
+    for file_name in file_name_list:
+        if re.search(r"\.csv", file_name):
+            if "_combined" not in file_name and "_PARSED" not in file_name:
+                raw_log_list.append(file_name)
+
+    # created multiple class to parse each CAN log
+    for i in range(len(raw_log_list)):
+        temp_raw_log_list = []
+        temp_raw_log_list.append(raw_log_list[i])
+        print(temp_raw_log_list)
+        # fmt: off
+        scud_can_log_convert_list[i]= scud_can_log_convert(
+            dbc_file_full_path="./maple_20243250.dbc",              # specify dbc file used
+            raw_log_file_path=raw_log_file_path,                    # CAN log folder path
+            raw_logs_list=temp_raw_log_list,                        # CAN log csv files list
+            file_path_combined_logs=raw_log_file_parsed_path + (temp_raw_log_list[0].split('.csv'))[0] + '_combined.csv',   # specify combined CAN log file name
+            file_path_parsed=raw_log_file_parsed_path + (temp_raw_log_list[0].split('.csv'))[0] + "_PARSED.csv",  # parsed CAN log file path
+            can_application_tool="CANTest",                         # CAN application tool used (CANTest, CANas), time stamp different
+        )
+        # fmt: on
+        scud_can_log_convert_list[i].multiple_scud_logs_combine()
+        scud_can_log_convert_list[i].convert_can_log_to_en()
+        scud_can_log_convert_list[i].parse_scud_can_log()
+    #######################################################################################################################
+    """
