@@ -5,7 +5,7 @@
 @Author  :   SimonYuan
 @Version :   1.0
 @Site    :   https://tresordie.github.io/
-@Desc    :   
+@Desc    :
 1. convert scud can log, porting from Ion Buzdugan's script, fixed the issue that standard frame "Unable to convert"
 2. covered almost all kinds of SCUD CAN log files format so far
 """
@@ -187,17 +187,16 @@ if __name__ == "__main__":
 
     # CAN log csv files list need to be combined
     raw_log_list = [
-        "6#(8781824-8847359).csv",
-        "6#(8847360-8912895).csv",
+        "pcb_id_zero.csv",
     ]
 
-    raw_log_file_path = "./23 laps can log/6#/23cycles/"
+    raw_log_file_path = "./"
     raw_log_file_parsed_path = raw_log_file_path + "parsed/"
     mkdir(raw_log_file_parsed_path)
 
     # fmt: off
     scud_can_log_convert = scud_can_log_convert(
-        dbc_file_full_path="./maple_20243250.dbc",        # specify dbc file used
+        dbc_file_full_path="./maple_20251651.dbc",        # specify dbc file used
         raw_log_file_path=raw_log_file_path,              # CAN log folder path
         raw_logs_list=raw_log_list,                       # CAN log csv files list
         file_path_combined_logs=raw_log_file_parsed_path + (raw_log_list[0].split('.csv'))[0] + '_combined.csv',   # specify combined CAN log file name

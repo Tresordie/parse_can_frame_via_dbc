@@ -33,7 +33,7 @@ NS_ :
 
 BS_:
 
-BU_: BMS Logger MfgTest OEM DU FastSensors HMI
+BU_: BMS Logger MfgTest OEM DU FastSensors HMI PT
 VAL_TABLE_ BatteryState 6 "Charging" 5 "Protection" 4 "Active" 3 "Predischarge" 2 "Idle" 1 "Sleep" 0 "Shutdown" ;
 VAL_TABLE_ BatteryCommand 6 "Charging" 4 "Active" 2 "Idle" 1 "Sleep" 0 "Shutdown" ;
 VAL_TABLE_ CAN_Mode 2 "BusOff" 1 "Passive" 0 "Active" ;
@@ -46,6 +46,9 @@ BO_ 256 OEM_Brose_DiagnosticProtocol_0x100: 8 OEM
 BO_ 257 OEM_Brose_DiagnosticProtocol_0x101: 8 OEM
 
 BO_ 272 FastSensors_Brose_SpdDUSpeed: 8 FastSensors
+
+BO_ 325 PT_RegenCommand_Auth: 1 PT
+ SG_ PT_RegenCommand : 0|2@1+ (1,0) [0|0] ""  BMS
 
 BO_ 512 DU_Brose_DUHmiInfo_00: 8 DU
 
@@ -76,7 +79,7 @@ BO_ 771 BMS_PowerAvailable: 4 BMS
  SG_ BMS_AvailableDischargePower : 0|16@1+ (0.1,0) [0|6553.5] "W"  Logger
  SG_ BMS_AvailableRegenPower : 16|16@1+ (0.1,0) [0|6553.5] "W"  Logger
 
-BO_ 772 BMS_Status: 6 BMS
+BO_ 772 BMS_Status: 7 BMS
  SG_ BMS_BatteryState : 0|8@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_EndOfDischargeFlag : 8|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_EndOfChargeFlag : 9|1@1+ (1,0) [0|0] ""  Logger
@@ -93,6 +96,7 @@ BO_ 772 BMS_Status: 6 BMS
  SG_ BMS_FuseBlown : 20|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_LimpMode : 21|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_IsLowPowerBusEnabled : 22|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_InVehicleDetectState : 23|2@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_IsOnCharger : 25|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_EndOfSupportFlag : 26|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_IsSavedPfOnBoot : 27|1@1+ (1,0) [0|0] ""  Logger
@@ -106,11 +110,17 @@ BO_ 772 BMS_Status: 6 BMS
  SG_ BMS_IsDischargingOverTemperature : 40|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_IsDischargingUnderTemperature : 41|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_IsDischargingOverCurrent : 42|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_IsHostBasedBleedingActive : 43|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_IsComponentOverTemperature : 44|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_IsPredischargeFault : 45|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_IsLastAfeCommunicationGood : 46|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_IsLastHumiditySensorCommunicationGood : 47|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_IsMcuSelfTestFault : 48|1@1+ (1,0) [0|0] ""  Logger
 
 BO_ 777 BMS_VoltageCurrentAdc: 8 BMS
  SG_ BMS_5VRegulator : 0|8@1+ (0.05,0) [0|12.75] "V"  Logger
  SG_ BMS_AfeRegulator : 8|8@1+ (0.02,0) [0|5.1] "V"  Logger
- SG_ BMS_ChargerNtc : 16|8@1+ (0.08,0) [0|20.4] "V"  Logger
+ SG_ BMS_LowPowerCurrent : 16|8@1+ (0.02,0) [0|5.1] "A"  Logger
  SG_ BMS_BatFuseVoltage : 24|8@1+ (0.5,0) [0|127.5] "V"  Logger
  SG_ BMS_VehicleDetect : 32|8@1+ (0.02,0) [0|5.1] "V"  Logger
  SG_ BMS_Vref : 40|8@1+ (0.02,0) [0|5.1] "V"  Logger
@@ -119,6 +129,9 @@ BO_ 777 BMS_VoltageCurrentAdc: 8 BMS
 BO_ 778 BMS_AfeMeasurements: 4 BMS
  SG_ BMS_AfePackVoltage : 0|16@1+ (0.002,0) [0|131.07] "V"  Logger
  SG_ BMS_AfeLoadVoltage : 16|16@1+ (0.002,0) [0|131.07] "V"  Logger
+
+BO_ 779 BMS_VoltageCurrentAdc2: 1 BMS
+ SG_ BMS_ChargerNtc : 0|8@1+ (0.08,0) [0|20.4] "V"  Logger
 
 BO_ 782 OEM_Brose_DiagnosticProtocol_0x30E: 8 OEM
 
@@ -245,6 +258,9 @@ BO_ 1027 BMS_Brose_BatteryStatusInfo_03: 8 BMS
  SG_ BMS_Brose_BatteryRelativeSOH : 0|16@1+ (1,0) [0|100] "%"  Logger
  SG_ BMS_Brose_BatteryStatusInfo03_Reserved : 16|16@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_Brose_BatteryAbsoluteSOH : 32|32@1+ (1,0) [0|4294967296] "mWh"  Logger
+
+BO_ 1028 BMS_StateOfEnergy: 1 BMS
+ SG_ BMS_SOC : 0|8@1+ (0.5,0) [0|100] "%"  Logger
 
 BO_ 1029 BMS_CellVoltage_1: 8 BMS
  SG_ BMS_Voltage_Cell1 : 0|16@1+ (0.001,0) [0|65.535] "V"  Logger
@@ -860,12 +876,11 @@ BO_ 1536 BMS_FaultLog: 8 BMS
  SG_ BMS_Log_f034_NtcCellTemp m34 : 48|8@1- (0.5,20) [-44|83.5] "degC"  Logger
  SG_ BMS_Log_f034_OvDetected m34 : 56|1@1+ (1,0) [0|1] ""  Logger
  SG_ BMS_Log_f034_UvDetected m34 : 57|1@1+ (1,0) [0|1] ""  Logger
- SG_ BMS_Log_f035_ConnectorTempNearPackPlus m35 : 8|8@1- (1,50) [-78|177] "degC"  Logger
+ SG_ BMS_Log_f035_ConnectorTemp m35 : 8|8@1- (1,50) [-78|177] "degC"  Logger
  SG_ BMS_Log_f035_FetTemp m35 : 16|8@1- (1,50) [-78|177] "degC"  Logger
  SG_ BMS_Log_f035_MaxCellTemp m35 : 24|8@1- (1,50) [-78|177] "degC"  Logger
  SG_ BMS_Log_f035_BatteryVoltage m35 : 32|8@1+ (0.25,0) [0|63.75] "V"  Logger
  SG_ BMS_Log_f035_BatteryCurrent m35 : 40|8@1- (1,0) [-128|127] "A"  Logger
- SG_ BMS_Log_f035_ConnectorTempNearPackMinus m35 : 48|8@1- (1,50) [-78|177] "degC"  Logger
  SG_ BMS_Log_f036_EcuTemp m36 : 8|8@1- (1,50) [-78|177] "degC"  Logger
  SG_ BMS_Log_f036_AfeTemp m36 : 16|8@1- (1,50) [-78|177] "degC"  Logger
  SG_ BMS_Log_f036_FetTemp m36 : 24|8@1- (1,50) [-78|177] "degC"  Logger
@@ -932,6 +947,13 @@ BO_ 1536 BMS_FaultLog: 8 BMS
  SG_ BMS_Log_f059_BatteryCurrent m59 : 16|16@1- (0.01,0) [-327.68|327.67] "A"  Logger
  SG_ BMS_Log_f059_BatteryVoltage m59 : 32|16@1+ (0.001,0) [0|65.535] "V"  Logger
  SG_ BMS_Log_f059_CellTemp m59 : 48|8@1- (0.5,20) [-44|83.5] "degC"  Logger
+ SG_ BMS_Log_f061_McuSelfTestInitFailed m61 : 8|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_Log_f061_McuSelfTestCpuGpRegsFailed m61 : 9|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_Log_f061_McuSelfTestCpuSpFailed m61 : 10|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_Log_f061_McuSelfTestCpuPcFailed m61 : 11|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_Log_f061_McuSelfTestCpuApsrFailed m61 : 12|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_Log_f061_McuSelfTestRamFailed m61 : 13|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_Log_f061_McuSelfTestClockFailed m61 : 14|1@1+ (1,0) [0|0] ""  Logger
 
 BO_ 1537 BMS_WarningLog: 8 BMS
  SG_ BMS_WarningId M : 0|8@1+ (1,0) [0|255] ""  Logger
@@ -962,12 +984,11 @@ BO_ 1537 BMS_WarningLog: 8 BMS
  SG_ BMS_Log_w019_CellTemp2 m19 : 16|8@1- (1,40) [-88|167] "degC"  Logger
  SG_ BMS_Log_w019_CellTemp3 m19 : 24|8@1- (1,40) [-88|167] "degC"  Logger
  SG_ BMS_Log_w019_CellTemp4 m19 : 32|8@1- (1,40) [-88|167] "degC"  Logger
- SG_ BMS_Log_w020_ConnectorTempNearPackPlus m20 : 8|8@1- (1,50) [-78|177] "degC"  Logger
+ SG_ BMS_Log_w020_ConnectorTemp m20 : 8|8@1- (1,50) [-78|177] "degC"  Logger
  SG_ BMS_Log_w020_FetTemp m20 : 16|8@1- (1,50) [-78|177] "degC"  Logger
  SG_ BMS_Log_w020_MaxCellTemp m20 : 24|8@1- (1,50) [-78|177] "degC"  Logger
  SG_ BMS_Log_w020_PackVoltage m20 : 32|8@1+ (0.25,0) [0|63.75] "V"  Logger
  SG_ BMS_Log_w020_BatteryCurrent m20 : 40|8@1- (1,0) [-128|127] "A"  Logger
- SG_ BMS_Log_w020_ConnectorTempNearPackMinus m20 : 48|8@1- (1,50) [-78|177] "degC"  Logger
  SG_ BMS_Log_w033_EcuTemp m33 : 8|8@1- (1,50) [-78|177] "degC"  Logger
  SG_ BMS_Log_w033_BatteryVoltage_AFE m33 : 16|16@1+ (0.001,0) [0|65.535] "V"  Logger
  SG_ BMS_Log_w033_BatteryVoltage_MCU m33 : 32|16@1+ (0.001,0) [0|65.535] "V"  Logger
@@ -1047,6 +1068,7 @@ BO_ 1540 BMS_FaultMatrix: 8 BMS
  SG_ BMS_f034_HW_2nd_Prot_Fault_Asserted : 34|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f035_SW_Connector_OT : 35|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f036_SW_Host_MCU_OT : 36|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_f037_SW_Low_Power_Bus_OCD : 37|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f039_AFE_Protection_Mismatch : 39|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f040_AFE_OTP_Memory_PF : 40|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f041_AFE_ROM_PF : 41|1@1+ (1,0) [0|0] ""  Logger
@@ -1062,10 +1084,13 @@ BO_ 1540 BMS_FaultMatrix: 8 BMS
  SG_ BMS_f052_SW_Predischarge_Dfet_Open : 52|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f053_SW_Battery_Blocked : 53|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f054_SW_TrickleChargeExceeded : 54|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_f055_SW_PF_Low_Power_Bus_Leakage : 55|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f056_HW_PF_Passive_Fuse_Blown : 56|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f057_SW_Humidity_Sensor_MIA : 57|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f058_SW_Predischarge_Fail_Max_Attempts : 58|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_f059_SW_Idle_OCD : 59|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_f060_SW_High_Relative_Humidity : 60|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_f061_SW_MCU_Self_Tests_Fail : 61|1@1+ (1,0) [0|0] ""  Logger
 
 BO_ 1541 BMS_WarningMatrix: 8 BMS
  SG_ BMS_w005_SW_Vref_Irrational : 5|1@1+ (1,0) [0|0] ""  Logger
@@ -1081,6 +1106,7 @@ BO_ 1541 BMS_WarningMatrix: 8 BMS
  SG_ BMS_w036_SW_All_Battery_Temp_Irrational : 36|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_w037_SW_FET_Temp_Irrational : 37|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_w038_SW_AFE_Degraded_Comms : 38|1@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_w041_SW_Accelerometer_Degraded_Comms : 41|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_w042_SW_Humidity_Sensor_Degraded_Comms : 42|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_w051_SW_Invalid_Regen : 51|1@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_w061_WatchdogTaskStatusUnknown : 61|1@1+ (1,0) [0|0] ""  Logger
@@ -1302,6 +1328,14 @@ BO_ 1796 BMS_TestLog: 8 BMS
  SG_ BMS_TestLog_Capacity_EndSOC m0 : 32|8@1+ (0.5,0) [0|100] "%"  Logger
  SG_ BMS_TestLog_Capacity_RestState m0 : 56|4@1+ (1,0) [0|0] ""  Logger
  SG_ BMS_TestLog_Capacity_CapacityState m0 : 60|4@1+ (1,0) [0|0] ""  Logger
+ SG_ BMS_TestLog_AfeCommError_ControllerState m1 : 8|8@1+ (1,0) [0|255] ""  Logger
+ SG_ BMS_TestLog_AfeCommError_ControllerErrorCode m1 : 16|32@1+ (1,0) [0|4294967295] ""  Logger
+ SG_ BMS_TestLog_AfeCommError_ControllerXferCount m1 : 48|16@1+ (1,0) [0|65535] ""  Logger
+ SG_ BMS_TestLog_AfeCommError_ControllerRegisterISR m2 : 8|32@1+ (1,0) [0|4294967295] ""  Logger
+ SG_ BMS_TestLog_AfeCommError_ControllerPreviousState m2 : 40|8@1+ (1,0) [0|255] ""  Logger
+ SG_ BMS_TestLog_AfeCommError_ControllerXferSize m2 : 48|16@1+ (1,0) [0|65535] ""  Logger
+ SG_ BMS_TestLog_AfeCommError_ControllerRegisterCR1 m3 : 8|32@1+ (1,0) [0|4294967295] ""  Logger
+ SG_ BMS_TestLog_AfeCommError_ControllerRegisterCR2 m4 : 8|32@1+ (1,0) [0|4294967295] ""  Logger
  SG_ BMS_TestLog_AfeCommError_TotalErrors m5 : 8|32@1+ (1,0) [0|4294967295] ""  Logger
  SG_ BMS_TestLog_AfeCommError_ErrorMask m5 : 40|16@1+ (1,0) [0|65535] ""  Logger
  SG_ BMS_TestLog_Capacity_NumEstimations m6 : 8|16@1+ (1,0) [0|65535] ""  Logger
@@ -1332,6 +1366,9 @@ BO_ 1796 BMS_TestLog: 8 BMS
  SG_ BMS_TestLog_Capacity_MaxCellVoltageAfterCharge m19 : 8|16@1+ (0.001,0) [0|65.535] "V"  Logger
  SG_ BMS_TestLog_Capacity_MinCellVoltageAfterRestedCharge m19 : 24|16@1+ (0.001,0) [0|65.535] "V"  Logger
  SG_ BMS_TestLog_Capacity_MaxCellVoltageAfterRestedCharge m19 : 40|16@1+ (0.001,0) [0|65.535] "V"  Logger
+ SG_ BMS_TestLog_AfeCommError_CrcErrorCount m23 : 8|16@1+ (1,0) [0|65535] ""  Logger
+ SG_ BMS_TestLog_AfeCommError_SyncTimeoutCount m23 : 24|16@1+ (1,0) [0|65535] ""  Logger
+ SG_ BMS_TestLog_AfeCommError_SyncTransferCount m23 : 40|16@1+ (1,0) [0|65535] ""  Logger
 
 BO_ 1802 MFG_BatteryCommand: 1 MFG
  SG_ MFG_BatteryCommand : 0|8@1+ (1,0) [0|0] ""  BMS
@@ -1364,30 +1401,39 @@ BA_DEF_  "BusType" STRING ;
 BA_DEF_  "ValidationType" STRING ;
 BA_DEF_ BO_  "GenMsgCycleTime" INT 0 0;
 BA_DEF_ BO_  "GenMsgSendType" ENUM  "cyclic","triggered","cyclicAndTriggered","alert","alert_log";
+BA_DEF_ BO_  "AlternateTxId" INT -1 2047;
+BA_DEF_ BO_  "AlternateRxId" INT -1 2047;
 BA_DEF_ SG_  "FieldType" STRING ;
 BA_DEF_ SG_  "SystemSignalLongSymbol" STRING ;
 BA_DEF_DEF_  "BusType" "CAN";
 BA_DEF_DEF_  "ValidationType" "FullValidation";
 BA_DEF_DEF_  "GenMsgCycleTime" 0;
 BA_DEF_DEF_  "GenMsgSendType" "cyclic";
+BA_DEF_DEF_  "AlternateTxId" 0;
+BA_DEF_DEF_  "AlternateRxId" 0;
 BA_DEF_DEF_  "FieldType" "";
 BA_DEF_DEF_  "SystemSignalLongSymbol" "";
 BA_ "ValidationType" "FullValidation";
 BA_ "GenMsgSendType" BO_ 256 1;
 BA_ "GenMsgSendType" BO_ 257 1;
 BA_ "GenMsgSendType" BO_ 272 1;
+BA_ "GenMsgCycleTime" BO_ 325 1000;
 BA_ "GenMsgSendType" BO_ 512 1;
 BA_ "GenMsgSendType" BO_ 513 1;
 BA_ "GenMsgSendType" BO_ 514 1;
 BA_ "GenMsgSendType" BO_ 515 1;
 BA_ "GenMsgSendType" BO_ 516 1;
 BA_ "GenMsgCycleTime" BO_ 768 100;
+BA_ "AlternateTxId" BO_ 768 -1;
+BA_ "AlternateRxId" BO_ 768 -1;
 BA_ "GenMsgCycleTime" BO_ 769 100;
 BA_ "GenMsgCycleTime" BO_ 770 100;
 BA_ "GenMsgCycleTime" BO_ 771 100;
 BA_ "GenMsgCycleTime" BO_ 772 100;
+BA_ "AlternateTxId" BO_ 772 768;
 BA_ "GenMsgCycleTime" BO_ 777 100;
 BA_ "GenMsgCycleTime" BO_ 778 100;
+BA_ "GenMsgCycleTime" BO_ 779 100;
 BA_ "GenMsgSendType" BO_ 782 1;
 BA_ "GenMsgSendType" BO_ 783 1;
 BA_ "GenMsgSendType" BO_ 784 1;
@@ -1425,20 +1471,33 @@ BA_ "GenMsgSendType" BO_ 815 1;
 BA_ "GenMsgSendType" BO_ 816 1;
 BA_ "GenMsgSendType" BO_ 817 1;
 BA_ "GenMsgSendType" BO_ 832 1;
+BA_ "AlternateRxId" BO_ 832 839;
 BA_ "GenMsgSendType" BO_ 833 1;
 BA_ "GenMsgCycleTime" BO_ 839 1000;
+BA_ "AlternateTxId" BO_ 839 832;
 BA_ "GenMsgCycleTime" BO_ 840 1000;
+BA_ "AlternateTxId" BO_ 840 -1;
 BA_ "GenMsgCycleTime" BO_ 841 10000;
+BA_ "AlternateTxId" BO_ 841 -1;
 BA_ "GenMsgSendType" BO_ 849 1;
 BA_ "GenMsgCycleTime" BO_ 1024 100;
+BA_ "AlternateTxId" BO_ 1024 -1;
+BA_ "AlternateRxId" BO_ 1024 -1;
 BA_ "GenMsgCycleTime" BO_ 1025 100;
 BA_ "GenMsgCycleTime" BO_ 1026 1000;
 BA_ "GenMsgCycleTime" BO_ 1027 1000;
+BA_ "GenMsgCycleTime" BO_ 1028 1000;
+BA_ "AlternateTxId" BO_ 1028 1024;
+BA_ "AlternateRxId" BO_ 1028 -1;
 BA_ "GenMsgCycleTime" BO_ 1029 1000;
+BA_ "AlternateTxId" BO_ 1029 1280;
 BA_ "GenMsgCycleTime" BO_ 1030 1000;
+BA_ "AlternateTxId" BO_ 1030 1281;
 BA_ "GenMsgCycleTime" BO_ 1031 1000;
+BA_ "AlternateTxId" BO_ 1031 1282;
 BA_ "GenMsgCycleTime" BO_ 1032 1000;
 BA_ "GenMsgCycleTime" BO_ 1033 1000;
+BA_ "AlternateTxId" BO_ 1033 1284;
 BA_ "GenMsgSendType" BO_ 1038 1;
 BA_ "GenMsgSendType" BO_ 1039 1;
 BA_ "GenMsgSendType" BO_ 1040 1;
@@ -1499,6 +1558,7 @@ BA_ "GenMsgSendType" BO_ 1094 1;
 BA_ "GenMsgSendType" BO_ 1095 1;
 BA_ "GenMsgSendType" BO_ 1096 1;
 BA_ "GenMsgSendType" BO_ 1097 1;
+BA_ "AlternateRxId" BO_ 1098 840;
 BA_ "GenMsgSendType" BO_ 1098 1;
 BA_ "GenMsgSendType" BO_ 1099 1;
 BA_ "GenMsgSendType" BO_ 1100 1;
@@ -1521,12 +1581,17 @@ BA_ "GenMsgSendType" BO_ 1116 1;
 BA_ "GenMsgSendType" BO_ 1117 1;
 BA_ "GenMsgSendType" BO_ 1118 1;
 BA_ "GenMsgSendType" BO_ 1119 1;
+BA_ "AlternateRxId" BO_ 1280 -1;
 BA_ "GenMsgSendType" BO_ 1280 1;
+BA_ "AlternateRxId" BO_ 1281 -1;
 BA_ "GenMsgSendType" BO_ 1281 1;
+BA_ "AlternateRxId" BO_ 1282 -1;
 BA_ "GenMsgSendType" BO_ 1282 1;
 BA_ "GenMsgSendType" BO_ 1283 1;
+BA_ "AlternateRxId" BO_ 1284 1033;
 BA_ "GenMsgSendType" BO_ 1284 1;
 BA_ "GenMsgSendType" BO_ 1285 1;
+BA_ "AlternateRxId" BO_ 1285 -1;
 BA_ "GenMsgCycleTime" BO_ 1286 1000;
 BA_ "GenMsgCycleTime" BO_ 1288 10000;
 BA_ "GenMsgCycleTime" BO_ 1289 1000;
@@ -1584,6 +1649,7 @@ BA_ "GenMsgSendType" BO_ 1341 1;
 BA_ "GenMsgSendType" BO_ 1342 1;
 BA_ "GenMsgSendType" BO_ 1343 1;
 BA_ "GenMsgSendType" BO_ 1344 1;
+BA_ "AlternateRxId" BO_ 1345 841;
 BA_ "GenMsgSendType" BO_ 1345 1;
 BA_ "GenMsgSendType" BO_ 1346 1;
 BA_ "GenMsgSendType" BO_ 1347 1;
@@ -1712,24 +1778,27 @@ BA_ "GenMsgSendType" BO_ 1640 1;
 BA_ "GenMsgSendType" BO_ 1641 1;
 BA_ "GenMsgSendType" BO_ 1792 1;
 BA_ "GenMsgSendType" BO_ 1793 1;
-BA_ "GenMsgCycleTime" BO_ 1795 10000;
+BA_ "GenMsgCycleTime" BO_ 1795 1000;
+BA_ "AlternateTxId" BO_ 1795 1285;
 BA_ "GenMsgCycleTime" BO_ 1796 10000;
 BA_ "GenMsgSendType" BO_ 1802 1;
 BA_ "GenMsgCycleTime" BO_ 1803 100;
 BA_ "GenMsgSendType" BO_ 2000 1;
 BA_ "GenMsgSendType" BO_ 2001 1;
 BA_ "GenMsgSendType" BO_ 2002 1;
-VAL_ 768 HMI_Brose_HmiSwitchOffInd 170 "Battery On" 165 "Battery Off" 90 "System On" ;
+VAL_ 325 PT_RegenCommand 2 "Disable" 1 "Enable" 0 "Unknown" ;
+VAL_ 768 HMI_Brose_HmiSwitchOffInd 170 "Battery On" 165 "Battery Off" 90 "System On" 0 "Reserved" ;
 VAL_ 772 BMS_BatteryState 7 "Shutdown" 6 "Charging" 5 "Protection" 4 "Active" 3 "Predischarge" 2 "Idle" 1 "Sleep" 0 "Reserved" ;
 VAL_ 772 BMS_ChargeFET 1 "Closed" 0 "Open" ;
 VAL_ 772 BMS_DischargeFET 1 "Closed" 0 "Open" ;
 VAL_ 772 BMS_PrechargeFET 1 "Closed" 0 "Open" ;
 VAL_ 772 BMS_PredischargeFET 1 "Closed" 0 "Open" ;
+VAL_ 772 BMS_InVehicleDetectState 2 "VehicleDetected" 1 "DeadVehicleDetected" 0 "NoVehicleDetected" ;
 VAL_ 772 BMS_AfeMode 4 "Shutdown" 3 "DeepSleep" 2 "Sleep" 1 "Normal" 0 "Reserved" ;
 VAL_ 839 PT_BatteryCommand 7 "Shutdown" 6 "Charging" 4 "Active" 2 "Idle" 1 "Sleep" 0 "Reserved" ;
 VAL_ 841 PT_CanbusState 3 "Standby" 2 "On" 1 "Off" 0 "Unknown" ;
 VAL_ 1024 BMS_Brose_BatteryCommandRegisters_CurrentReduction 0 "Power Not Reduced" 1 "Power Reduced To 75 Percent" 2 "Power Reduced To 50 Percent" 3 "Power Reduced To 25 Percent" ;
-VAL_ 1536 BMS_FaultId 0 "BMS_f000_AlertNumberNotSet" 1 "BMS_f001_HW_CUV" 2 "BMS_f002_HW_COV" 3 "BMS_f003_HW_OCC" 4 "BMS_f004_HW_OCD" 5 "BMS_f005_HW_SCD" 8 "BMS_f008_HW_OTD" 9 "BMS_f009_HW_UTD" 10 "BMS_f010_HW_PF_CUV" 11 "BMS_f011_HW_PF_COV" 12 "BMS_f012_SW_PF_COT" 13 "BMS_f013_SW_PF_Voltage_Imbalance" 14 "BMS_f014_SW_PF_FET_Leakage" 15 "BMS_f015_SW_PF_FET_OT" 16 "BMS_f016_SW_CUV" 17 "BMS_f017_SW_COV" 18 "BMS_f018_SW_PF_Cell_Overdischarged" 19 "BMS_f019_SW_Battery_UV" 20 "BMS_f020_SW_Battery_OV" 21 "BMS_f021_SW_OCC" 22 "BMS_f022_SW_OCD" 23 "BMS_f023_SW_OTC" 24 "BMS_f024_SW_OTD" 25 "BMS_f025_SW_UTC" 26 "BMS_f026_SW_UTD" 29 "BMS_f029_SW_Voltage_Imbalance" 30 "BMS_f030_SW_FET_OT" 31 "BMS_f031_HW_FET_OT" 32 "BMS_f032_SW_PF_AFE_MIA" 34 "BMS_f034_HW_2nd_Prot_Fault_Asserted" 35 "BMS_f035_SW_Connector_OT" 36 "BMS_f036_SW_Host_MCU_OT" 39 "BMS_f039_AFE_Protection_Mismatch" 40 "BMS_f040_AFE_OTP_Memory_PF" 41 "BMS_f041_AFE_ROM_PF" 42 "BMS_f042_AFE_Internal_PF" 43 "BMS_f043_AFE_Commanded_PF" 44 "BMS_f044_AFE_Host_Watchdog" 46 "BMS_f046_AFE_Internal_UT" 47 "BMS_f047_AFE_Internal_OT" 48 "BMS_f048_SW_Pack_Voltage_Present" 49 "BMS_f049_SW_Predischarge_Fail_Short_Circuit" 50 "BMS_f050_SW_Predischarge_Fail_Voltage_Diff" 51 "BMS_f051_SW_Predischarge_Fail_Open_Circuit" 52 "BMS_f052_SW_Predischarge_Dfet_Open" 53 "BMS_f053_SW_Battery_Blocked" 54 "BMS_f054_SW_TrickleChargeExceeded" 56 "BMS_f056_HW_PF_Passive_Fuse_Blown" 57 "BMS_f057_SW_Humidity_Sensor_MIA" 58 "BMS_f058_SW_Predischarge_Fail_Max_Attempts" 59 "BMS_f059_SW_Idle_OCD" ;
+VAL_ 1536 BMS_FaultId 0 "BMS_f000_AlertNumberNotSet" 1 "BMS_f001_HW_CUV" 2 "BMS_f002_HW_COV" 3 "BMS_f003_HW_OCC" 4 "BMS_f004_HW_OCD" 5 "BMS_f005_HW_SCD" 8 "BMS_f008_HW_OTD" 9 "BMS_f009_HW_UTD" 10 "BMS_f010_HW_PF_CUV" 11 "BMS_f011_HW_PF_COV" 12 "BMS_f012_SW_PF_COT" 13 "BMS_f013_SW_PF_Voltage_Imbalance" 14 "BMS_f014_SW_PF_FET_Leakage" 15 "BMS_f015_SW_PF_FET_OT" 16 "BMS_f016_SW_CUV" 17 "BMS_f017_SW_COV" 18 "BMS_f018_SW_PF_Cell_Overdischarged" 19 "BMS_f019_SW_Battery_UV" 20 "BMS_f020_SW_Battery_OV" 21 "BMS_f021_SW_OCC" 22 "BMS_f022_SW_OCD" 23 "BMS_f023_SW_OTC" 24 "BMS_f024_SW_OTD" 25 "BMS_f025_SW_UTC" 26 "BMS_f026_SW_UTD" 29 "BMS_f029_SW_Voltage_Imbalance" 30 "BMS_f030_SW_FET_OT" 31 "BMS_f031_HW_FET_OT" 32 "BMS_f032_SW_PF_AFE_MIA" 34 "BMS_f034_HW_2nd_Prot_Fault_Asserted" 35 "BMS_f035_SW_Connector_OT" 36 "BMS_f036_SW_Host_MCU_OT" 39 "BMS_f039_AFE_Protection_Mismatch" 40 "BMS_f040_AFE_OTP_Memory_PF" 41 "BMS_f041_AFE_ROM_PF" 42 "BMS_f042_AFE_Internal_PF" 43 "BMS_f043_AFE_Commanded_PF" 44 "BMS_f044_AFE_Host_Watchdog" 46 "BMS_f046_AFE_Internal_UT" 47 "BMS_f047_AFE_Internal_OT" 48 "BMS_f048_SW_Pack_Voltage_Present" 49 "BMS_f049_SW_Predischarge_Fail_Short_Circuit" 50 "BMS_f050_SW_Predischarge_Fail_Voltage_Diff" 51 "BMS_f051_SW_Predischarge_Fail_Open_Circuit" 52 "BMS_f052_SW_Predischarge_Dfet_Open" 53 "BMS_f053_SW_Battery_Blocked" 54 "BMS_f054_SW_TrickleChargeExceeded" 56 "BMS_f056_HW_PF_Passive_Fuse_Blown" 57 "BMS_f057_SW_Humidity_Sensor_MIA" 58 "BMS_f058_SW_Predischarge_Fail_Max_Attempts" 59 "BMS_f059_SW_Idle_OCD" 61 "BMS_f061_SW_MCU_Self_Tests_Fail" ;
 VAL_ 1537 BMS_WarningId 0 "BMS_w000_AlertNumberNotSet" 5 "BMS_w005_SW_Vref_Irrational" 8 "BMS_w008_HW_Regulator_Voltage_Irrational" 9 "BMS_w009_HW_OTC" 10 "BMS_w010_HW_UTC" 11 "BMS_w011_SW_Internal_Flash" 19 "BMS_w019_SW_Temp_Gradient" 20 "BMS_w020_SW_Connector_OT" 32 "BMS_w032_SW_PWT_MIA" 33 "BMS_w033_SW_Voltage_Sensor_Irrational" 35 "BMS_w035_SW_Single_Battery_Temp_Irrational" 36 "BMS_w036_SW_All_Battery_Temp_Irrational" 37 "BMS_w037_SW_FET_Temp_Irrational" 38 "BMS_w038_SW_AFE_Degraded_Comms" 42 "BMS_w042_SW_Humidity_Sensor_Degraded_Comms" 51 "BMS_w051_SW_Invalid_Regen" 61 "BMS_w061_WatchdogTaskStatusUnknown" ;
 VAL_ 1538 BMS_DiagnosticId 0 "BMS_d000_AlertNumberNotSet" 1 "BMS_d001_ECU_Reset" ;
 VAL_ 1795 BMS_BleedResistorState_1 1 "Bleeding" 0 "Not Bleeding" ;
